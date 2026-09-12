@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Divya ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap');
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;overflow:hidden;
+ background:linear-gradient(135deg,#ffd6e7,#ffeaf3,#ffd1e3);
+ font-family:Poppins,sans-serif;display:flex;justify-content:center;align-items:center;
+ color:#7a294d
+}
+.container{
+ width:90%;max-width:650px;min-height:520px;padding:45px 30px;
+ background:rgba(255,255,255,.55);border-radius:30px;
+ box-shadow:0 15px 40px rgba(150,50,90,.18);backdrop-filter:blur(10px);
+ text-align:center;position:relative;z-index:5
+}
+h1{font-family:'Dancing Script',cursive;font-size:55px;margin:10px 0;color:#d6336c}
+h2{font-family:'Dancing Script',cursive;font-size:40px;color:#c72f64}
+p{font-size:18px;line-height:1.8}
+.message{font-family:'Dancing Script',cursive;font-size:28px;line-height:1.6;color:#9b3159}
+button{
+ border:none;padding:14px 30px;margin:10px;border-radius:30px;font-size:17px;
+ cursor:pointer;transition:.3s;font-family:Poppins,sans-serif
+}
+.yes{background:#e75480;color:white}.no{background:white;color:#d6336c}
+button:hover{transform:scale(1.08)}
+.hidden{display:none}
+.heart{position:fixed;bottom:-30px;font-size:22px;animation:floatUp linear forwards;opacity:.7;z-index:1}
+@keyframes floatUp{
+ from{transform:translateY(0) rotate(0);opacity:.8}
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+.heart-big{font-size:75px;animation:heartbeat 1.2s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.small{font-size:15px;opacity:.8}
+#noMessage{font-family:'Dancing Script',cursive;font-size:25px;color:#c72f64;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<section id="page1">
+ <div class="heart-big">🥺</div>
+ <h1>Divya...</h1>
+ <p class="message">I have something I really want to say to you...</p>
+ <button class="yes" onclick="nextPage(2)">Tell me ❤️</button>
+</section>
+
+<section id="page2" class="hidden">
+ <div class="heart-big">💗</div>
+ <h2>I'm Sorry...</h2>
+ <p class="message">
+  I'm really, really sorry. 🥺<br><br>
+  I know that saying "sorry" doesn't magically fix everything,
+  but I truly mean it from my heart.
+ </p>
+ <button class="yes" onclick="nextPage(3)">Keep reading 💕</button>
+</section>
+
+<section id="page3" class="hidden">
+ <div class="heart-big">💭</div>
+ <h2>I Miss You...</h2>
+ <p class="message">
+  More than I can explain.<br><br>
+  I miss talking to you.<br>
+  I miss your presence.<br>
+  I miss the little things.<br><br>
+  Basically... I just miss <b>YOU</b>. ❤️
+ </p>
+ <button class="yes" onclick="nextPage(4)">One more thing 💌</button>
+</section>
+
+<section id="page4" class="hidden">
+ <div class="heart-big">🥹</div>
+ <h2>Can You Forgive Me?</h2>
+ <p class="message">
+  I don't want to force you to forget what happened.<br><br>
+  I just want a chance to make things better.<br>
+  I'm sorry, Divya. ❤️
+ </p>
+ <button class="yes" onclick="forgive()">Yes ❤️</button>
+ <button class="no" onclick="notYet()">Not yet 🥺</button>
+ <div id="noMessage"></div>
+</section>
+
+<section id="page5" class="hidden">
+ <div class="heart-big">❤️</div>
+ <h2>Thank You...</h2>
+ <p class="message">
+  I promise I'll try to do better.<br><br>
+  No matter what, I just wanted you to know
+  that you mean a lot to me.<br><br>
+  And yes...<br>
+  <b>I REALLY MISS YOU. 🥺❤️</b>
+ </p>
+ <div style="font-size:85px;margin:15px">💗</div>
+ <p class="small">This little website was made just for you, Divya.</p>
+</section>
+
+</div>
+<script>
+function nextPage(pageNumber){
+ for(let i=1;i<=5;i++) document.getElementById("page"+i).classList.add("hidden");
+ document.getElementById("page"+pageNumber).classList.remove("hidden");
+}
+function forgive(){nextPage(5)}
+function notYet(){
+ const messages=[
+  "I'll wait... 🥺❤️",
+  "I understand. Take your time. 💗",
+  "I'm still sorry... 🥹",
+  "I'll keep trying to make it right. ❤️",
+  "Whenever you're ready... 💕"
+ ];
+ document.getElementById("noMessage").innerText=messages[Math.floor(Math.random()*messages.length)];
+}
+function createHeart(){
+ const heart=document.createElement("div");
+ heart.className="heart";
+ const hearts=["❤️","💕","💗","💖","💓","💞","💘"];
+ heart.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.animationDuration=(5+Math.random()*5)+"s";
+ heart.style.fontSize=(15+Math.random()*20)+"px";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),10000);
+}
+setInterval(createHeart,450);
+</script>
+</body>
+</html>
